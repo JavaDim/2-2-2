@@ -8,7 +8,7 @@ import java.util.List;
 
 @Component
 public class CarService {
-    List<Car> cars;
+    private final List<Car> cars;
 
     {
         cars = new ArrayList<>();
@@ -19,11 +19,10 @@ public class CarService {
         cars.add(new Car("Passat", "white", 5));
     }
 
-    public List<Car> getListCar() {
-        return cars;
-    }
-
-    public List<Car> getCarCount(List<Car> cars, int count) {
+    public List<Car> getCarCount(Integer count) {
+        if (count == null) {
+            return cars;
+        }
         return cars.stream().limit(count).toList();
     }
 }
